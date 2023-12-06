@@ -355,7 +355,7 @@
 "Assets/Script/CameraMoving.cs"
 "Assets/Script/MousePointManage.cs"
 "Assets/Script/Player.cs"
-"Assets/Script/SwordSlash.cs"
+"Assets/Script/SwordSplashAnimationManage.cs"
 -langversion:9.0
 
 /deterministic
