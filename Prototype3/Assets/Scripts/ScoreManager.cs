@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,23 +15,19 @@ public class ScoreManager : MonoBehaviour
         score = 0;
         UpdateScoreText();
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        InvokeRepeating("IncreaseScore", 1f, 1f);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void IncreaseScore()
     {
-        int deltaTimeAsInt = Mathf.RoundToInt(Time.deltaTime);
-
-        IncreaseScore(deltaTimeAsInt);
-        if (playerControllerScript.isRunning)
+        if (playerControllerScript.isRunning && !playerControllerScript.gameOver)
         {
-            IncreaseScore(2 * deltaTimeAsInt);
+            score += 20;
         }
-    }
-
-    public void IncreaseScore(int amount)
-    {
-        score += amount;
+        else if (!playerControllerScript.gameOver)
+        {
+            score += 10;
+        }
         UpdateScoreText();
     }
 
